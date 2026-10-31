@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 16:52:40 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:00:19 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 19:23:01 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	ft_printf(const char *str, ...)
 	int		len;
 	int		tmp;
 
+	if (!str)
+		return (-1);
 	len = 0;
 	i = 0;
 	va_start(args, str);
