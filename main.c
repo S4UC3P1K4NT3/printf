@@ -5,10 +5,14 @@
 /*                                                   +:+ +:+         +:+      */
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/10/31 19:11:56 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:17:47 by gtomasin        ###   ########.fr        */
+/*   Created: 2026/10/31 19:20:02 by gtomasin         #+#    #+#              */
+/*   Updated: 2026/10/31 19:20:12 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
+
+#if defined(__GNUC__) && !defined(__clang__)
+# pragma GCC diagnostic ignored "-Wformat-overflow"
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -278,14 +282,14 @@ int	main(void)
 	section("%s");
 	T("chaine simple", "%s", "hello");
 	T("chaine vide", "%s", "");
-	T("pointeur NULL", "%s", (char *) NULL);
-	T("NULL entre du texte", "a%sb", (char *) NULL);
+	T("pointeur NULL", "%s", g_null);
+	T("NULL entre du texte", "a%sb", g_null);
 	T("caracteres speciaux", "%s", "\t\v\f\r\n");
 	T("UTF-8 / non ASCII", "%s", "h\xc3\xa9llo \xe2\x82\xac");
 	T("chaine contenant des %", "%s", "%d %s %%");
 	T("chaine de 10000 caracteres", "%s", longstr);
 	T("deux chaines collees", "%s%s", "abc", "def");
-	T("chaine vide puis NULL", "%s%s", "", (char *) NULL);
+	T("chaine vide puis NULL", "%s%s", "", g_null);
 	section("%d / %i");
 	T("zero", "%d", 0);
 	T("un", "%d", 1);
@@ -352,7 +356,7 @@ int	main(void)
 	T("tabulations et retours", "\t%d\n\t%s\n", 1, "a");
 	section("melanges");
 	T("toutes les conversions", "%c|%s|%d|%i|%u|%x|%X|%p|%%", 'z', "ok", -42, 42, 42u, 255u, 255u, (void *) & x);
-	T("toutes les limites", "%d %d %u %x %X %p %p %s", INT_MIN, INT_MAX, UINT_MAX, UINT_MAX, 0u, (void *) NULL, (void *) ULONG_MAX, (char *) NULL);
+	T("toutes les limites", "%d %d %u %x %X %p %p %s", INT_MIN, INT_MAX, UINT_MAX, UINT_MAX, 0u, (void *) NULL, (void *) ULONG_MAX, g_null);
 	T("20 arguments", "%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d%d", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20);
 	T("conversions sans separateur", "%s%d%s%x", "a", 1, "b", 255u);
 	T("texte autour de tout", "[%c] [%s] [%d] [%p]", 'a', "b", 3, (void *) NULL);
