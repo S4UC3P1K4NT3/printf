@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 19:11:56 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:11:56 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 19:17:47 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int		g_pipe[2];
 static pid_t	g_pid;
 static int		g_ok;
 static int		g_ko;
+static char		*volatile g_null = NULL;
 
 static int	read_file(const char *path, char *buf)
 {
