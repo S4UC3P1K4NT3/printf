@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 17:17:01 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:00:17 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 19:26:52 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putnbr_fd(int nb, int fd)
 
 	len = 0;
 	if (nb == -2147483648)
-		return (write(fd, "-2147483648", 11), 11);
+		return (write(fd, "-2147483648", 11));
 	if (nb < 0)
 	{
 		len += write(fd, "-", 1);
