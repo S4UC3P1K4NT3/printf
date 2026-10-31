@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 16:52:40 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:33:50 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 21:22:41 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,3 +74,26 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
+
+// #include <stdio.h>
+// #include <limits.h>
+
+// int	main(void)
+// {
+// 	int	x;
+// 	int	r1;
+// 	int	r2;
+
+// 	r1 = ft_printf("[%c|%s|%d|%i]\n", 'a', "abc", INT_MIN, INT_MAX);
+// 	r2 = printf("[%c|%s|%d|%i]\n", 'a', "abc", INT_MIN, INT_MAX);
+// 	printf("ret %d / %d\n\n", r1, r2);
+// 	r1 = ft_printf("[%u|%x|%X|%%]\n", UINT_MAX, 255u, 255u);
+// 	r2 = printf("[%u|%x|%X|%%]\n", UINT_MAX, 255u, 255u);
+// 	printf("ret %d / %d\n\n", r1, r2);
+// 	r1 = ft_printf("[%p|%p]\n", (void *)&x, (void *)0);
+// 	r2 = printf("[%p|%p]\n", (void *)&x, (void *)0);
+// 	printf("ret %d / %d\n\n", r1, r2);
+// 	r1 = ft_printf("[%s]\n", (char *)0);
+// 	printf("ret %d (attendu : [(null)] et 9)\n", r1);
+// 	return (0);
+// }
