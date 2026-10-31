@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 19:01:23 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:01:24 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 19:04:10 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,19 +103,9 @@ static void	ptr_expected(void *p, char *buf)
 	buf[j] = '\0';
 }
 
-#define TEST(exp, ...) do { \
-int	saved_ = start_capture();
-\
-int	ret_ = ft_printf(__VA_ARGS__);
-\
-stop_capture(saved_);
-\
-check(# __VA_ARGS__, exp, (int)(sizeof(exp) - 1), ret_);
-\
-}
-while (0)
+#define TEST(exp, ...) do { int s_ = start_capture(); int r_ = ft_printf(__VA_ARGS__); stop_capture(s_); check(#__VA_ARGS__, exp, (int)(sizeof(exp) - 1), r_); } while (0)
 
-	int	main(void)
+int	main(void)
 {
 	int		x;
 	int		saved;
