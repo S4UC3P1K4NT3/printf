@@ -2,21 +2,21 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SOURCES = ft_printf.c requiredft.c
 OBJS = $(SOURCES:.c=.o)
-TARGET = libftprintf.a
+NAME = libftprintf.a
 
-all: $(TARGET)
+all: $(NAME)
 
-$(TARGET): $(OBJS)
-	ar -rcs $(TARGET) $(OBJS)
+$(NAME): $(OBJS)
+	ar -rcs $(NAME) $(OBJS)
 
-%.o : %.c
+%.o : %.c ft_printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
 re: fclean all
 
