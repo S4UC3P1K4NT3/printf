@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 16:52:40 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:29:13 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/10/31 19:31:35 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,17 @@ int	ft_printf(const char *str, ...)
 	if (!str)
 		return (-1);
 	len = 0;
-	i = 0;
+	i = -1;
 	va_start(args, str);
-	while (str[i])
+	while (str[++i])
 	{
 		if (str[i] == '%')
-		{
-			tmp = getvalue(str[i + 1], args);
-			if (tmp == -1)
-				return (va_end(args), -1);
-			len += tmp;
-			i++;
-		}
+			tmp = getvalue(str[++i], args);
 		else
-			len += ft_putchar_fd(str[i], 1);
-		i++;
+			tmp = ft_putchar_fd(str[i], 1);
+		if (tmp < 0)
+			return (va_end(args), -1);
+		len += tmp;
 	}
 	va_end(args);
 	return (len);
