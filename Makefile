@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SOURCES = 
+SOURCES = ft_printf.c requiredft.c
 OBJS = $(SOURCES:.c=.o)
 TARGET = libftprintf.a
 
