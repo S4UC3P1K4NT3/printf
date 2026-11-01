@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 17:17:01 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/11/02 00:05:51 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/11/02 00:06:15 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_putstr_fd(char *s, int fd)
 	len = 0;
 	while (*s)
 	{
-		if (write(fd, s, 1))
+		if (write(fd, s, 1) < 0)
 			return (-1);
 		len++;
 		s++;
