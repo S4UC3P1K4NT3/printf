@@ -6,7 +6,7 @@
 /*   By: gtomasin <gtomasin@student.42lehavre.fr>  #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/10/31 17:17:01 by gtomasin         #+#    #+#              */
-/*   Updated: 2026/10/31 19:26:52 by gtomasin        ###   ########.fr        */
+/*   Updated: 2026/11/02 00:05:51 by gtomasin        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	ft_putnbr_fd(int nb, int fd)
 	if (nb >= 10)
 		len += ft_putnbr_fd(nb / 10, fd);
 	c = nb % 10 + '0';
-	len += write(fd, &c, 1);
+	if (write(fd, &c, 1) < 0)
+		return (-1);
+	len++;
 	return (len);
 }
 
@@ -46,7 +48,9 @@ int	ft_putstr_fd(char *s, int fd)
 	len = 0;
 	while (*s)
 	{
-		len += write(fd, s, 1);
+		if (write(fd, s, 1))
+			return (-1);
+		len++;
 		s++;
 	}
 	return (len);
@@ -61,7 +65,9 @@ int	ft_puthex(unsigned long nb, char *base)
 	if (nb >= 16)
 		len += ft_puthex(nb / 16, base);
 	c = base[nb % 16];
-	len += write(1, &c, 1);
+	if (write(1, &c, 1) < 0)
+		return (-1);
+	len++;
 	return (len);
 }
 
@@ -74,6 +80,8 @@ int	ft_putunbr(unsigned int nb)
 	if (nb >= 10)
 		len += ft_putunbr(nb / 10);
 	c = nb % 10 + '0';
-	len += write(1, &c, 1);
+	if (write(1, &c, 1) < 0)
+		return (-1);
+	len++;
 	return (len);
 }
